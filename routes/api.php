@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('save-subscription', [WebPushController::class, 'saveSubscription']);
+Route::post('/save-subscription', [WebPushController::class, 'saveSubscription']);
