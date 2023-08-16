@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Events\PusherBroadcast;
-use App\Models\PushSubscription;
-use Exception;
 use Minishlink\WebPush\WebPush;
+use App\Models\PushSubscription;
+use Illuminate\Support\Facades\Log;
 use Minishlink\WebPush\Subscription;
 
 class PusherController
@@ -53,9 +54,9 @@ class PusherController
             $endpoint = $report->getRequest()->getUri()->__toString();
 
             if ($report->isSuccess()) {
-                \Log::info("[v] Message sent successfully for subscription {$endpoint}.");
+                Log::info("[v] Message sent successfully for subscription {$endpoint}.");
             } else {
-                \Log::info("[x] Message failed to sent for subscription {$endpoint}: {$report->getReason()}");
+                Log::info("[x] Message failed to sent for subscription {$endpoint}: {$report->getReason()}");
             }
         }
 

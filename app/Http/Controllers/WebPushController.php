@@ -3,16 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Events\PusherBroadcast;
-use Minishlink\WebPush\WebPush;
 use App\Models\PushSubscription;
-use Minishlink\WebPush\Subscription;
+use Illuminate\Support\Facades\Log;
 
 class WebPushController
 {
     public function saveSubscription(Request $request)
     {
-        \Log::info('saving subscription', ['$request' => $request->all()]);
+        Log::info('saving subscription', ['$request' => $request->all()]);
 
         $auth = $request->get('keys')['auth'];
 
